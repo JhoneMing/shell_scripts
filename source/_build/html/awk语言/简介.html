@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1 简介 &mdash; shell_scripts v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="shell_scripts v1.0 documentation" href="../index.html"/>
+        <link rel="next" title="2 运行awk" href="运行awk.html"/>
+        <link rel="prev" title="my_study_rst’s 学习笔记" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> shell_scripts
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">awk语言</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1 简介</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#awk">1.0 关于awk语言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.1 如何运行awk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.1.1 运行awk没有输入文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.1.2 运行一个长命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.1.3 执行awk脚本文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.1.4 在awk脚本中添加注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shell">1.1.5 shell下的引号问题</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">1.2 样例数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">1.3 一些简单的awk使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">1.4 两个规则样例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">1.5 关于awk语句的跨行问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="运行awk.html">2 运行awk</a></li>
+</ul>
+<p class="caption"><span class="caption-text">常用问题解决</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../常用问题解决/awk库函数.html">1 awk库函数</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">shell_scripts</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>1 简介</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/awk语言/简介.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>1 简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="awk">
+<h2>1.0 关于awk语言<a class="headerlink" href="#awk" title="Permalink to this headline">¶</a></h2>
+<p>awk的基本功能是搜索包含特定模式的行（或其他文本单元）的文件。当一行符合其中一个模式时，awk将在该行上执行指定的操作。 awk继续以这种方式处理输入行，直到达到输入文件的末尾。</p>
+<p>awk中的程序与大多数其他语言中的程序不同，因为awk程序是数据驱动的（即，描述要使用的数据，然后在找到它时执行什么操作）。大多数其他语言是程序性的;你必须详细描述程序应该采取的每一步。在使用程序语言时，通常要更清楚地描述程序将要处理的数据。出于这个原因，awk程序通常很容易读写。</p>
+<p>当你运行awk时，你指定了一个awk程序来告诉awk该怎么做。该程序由一系列规则组成（它也可能包含函数定义，我们现在将忽略的高级功能;请参阅用户定义）。每个规则指定一个要搜索的模式和一个寻找模式的操作。</p>
+<p>在语法上，一个规则由一个模式和一个动作组成。这个动作用大括号括起来以便将它从模式中分离出来。换行通常分开规则。因此，一个awk程序看起来像这样：</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>pattern { action }
+pattern { action }
+…
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>1.1 如何运行awk<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>运行一个简单的awk是这个样子的</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;program&#39;</span> input-file1 input-file2 …
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3>1.1.1 运行awk没有输入文件<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>如果这是一个简单的打印工作，不需要输入，我们可以使用如下方式：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ awk <span class="s1">&#39;BEGIN {print &quot;hello world&quot;}&#39;</span>
+hello world
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>1.1.2 运行一个长命令<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>我们如果代码过于长的话， 可以考虑把代码写入到文件中去，可以参考如下用法：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ vim advice.awk
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ cat advice.awk
+BEGIN <span class="o">{</span> print <span class="s2">&quot;hellow world 2&quot;</span> <span class="o">}</span>
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ awk -f advice.awk
+hellow world <span class="m">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>1.1.3 执行awk脚本文件<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>上面的awk脚本已经写入到文件了，但是不是太完善， 我们可以改下为如下：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ cp advice.awk advice2.awk
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ vim advice2.awk
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ cat advice2.awk
+<span class="c1">#!/usr/bin/awk -f</span>
+BEGIN <span class="o">{</span> print <span class="s2">&quot;hellow world 3&quot;</span> <span class="o">}</span>
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ chmod a+x advice2.awk
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ ./advice2.awk
+hellow world <span class="m">3</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">上面的`#!/usr/bin/awk -f` 是Shebang机制，正如写bash脚本需要加`#!/usr/bin/bash`一样的</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>1.1.4 在awk脚本中添加注释<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>添加注释和bash一样。 需要在行首添加一个#即可</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ cp advice2.awk  advice3.awk
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ vim advice3.awk
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ cat advice3.awk
+<span class="c1">#!/usr/bin/awk -f</span>
+<span class="c1"># this is a  test script</span>
+BEGIN <span class="o">{</span> print <span class="s2">&quot;hellow world 3&quot;</span> <span class="o">}</span> <span class="c1"># this is a comment</span>
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ ./advice3.awk
+hellow world <span class="m">3</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">这个再次强调下，“# this is test script”是注释，第一行虽然也是“#”打头，但不是注释。是Shebang机制要求的。</p>
+</div>
+</div>
+<div class="section" id="shell">
+<h3>1.1.5 shell下的引号问题<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h3>
+<p>awk的`progra`语句用单引号引起来，里面用到字符串使用双引号引起来。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ awk <span class="s1">&#39;BEGIN { print &quot;this is a quote&quot; }&#39;</span>
+this is a quote
+</pre></div>
+</div>
+<p>如果内部用到的字符串使用了单引号，可以采取如下措施：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>[root@centos74 test]$ awk -v sq=&quot;&#39;&quot; &#39;BEGIN { print &quot;Here is a single quote &lt;&quot; sq &quot;&gt;&quot; }&#39;
+Here is a single quote &lt;&#39;&gt;
+</pre></div>
+</div>
+<p>上面使用了一个变量sq来表示单引号，里面引用这个变量就可以了。避免了各种转义引起的繁琐问题。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>1.2 样例数据<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>为了后续的实验方便，这里提供几个样例文件：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ cat mail-list
+Amelia       <span class="m">555</span>-5553     amelia.zodiacusque@gmail.com    F
+Anthony      <span class="m">555</span>-3412     anthony.asserturo@hotmail.com   A
+Becky        <span class="m">555</span>-7685     becky.algebrarum@gmail.com      A
+Bill         <span class="m">555</span>-1675     bill.drowning@hotmail.com       A
+Broderick    <span class="m">555</span>-0542     broderick.aliquotiens@yahoo.com R
+Camilla      <span class="m">555</span>-2912     camilla.infusarum@skynet.be     R
+Fabius       <span class="m">555</span>-1234     fabius.undevicesimus@ucb.edu    F
+Julie        <span class="m">555</span>-6699     julie.perscrutabor@skeeve.com   F
+Martin       <span class="m">555</span>-6480     martin.codicibus@hotmail.com    A
+Samuel       <span class="m">555</span>-3430     samuel.lanceolis@shu.edu        A
+Jean-Paul    <span class="m">555</span>-2127     jeanpaul.campanorum@nyu.edu     R
+<span class="o">[</span>root@centos74 test<span class="o">]</span>$ cat inventory-shipped
+Jan  <span class="m">13</span>  <span class="m">25</span>  <span class="m">15</span> <span class="m">115</span>
+Feb  <span class="m">15</span>  <span class="m">32</span>  <span class="m">24</span> <span class="m">226</span>
+Mar  <span class="m">15</span>  <span class="m">24</span>  <span class="m">34</span> <span class="m">228</span>
+Apr  <span class="m">31</span>  <span class="m">52</span>  <span class="m">63</span> <span class="m">420</span>
+May  <span class="m">16</span>  <span class="m">34</span>  <span class="m">29</span> <span class="m">208</span>
+Jun  <span class="m">31</span>  <span class="m">42</span>  <span class="m">75</span> <span class="m">492</span>
+Jul  <span class="m">24</span>  <span class="m">34</span>  <span class="m">67</span> <span class="m">436</span>
+Aug  <span class="m">15</span>  <span class="m">34</span>  <span class="m">47</span> <span class="m">316</span>
+Sep  <span class="m">13</span>  <span class="m">55</span>  <span class="m">37</span> <span class="m">277</span>
+Oct  <span class="m">29</span>  <span class="m">54</span>  <span class="m">68</span> <span class="m">525</span>
+Nov  <span class="m">20</span>  <span class="m">87</span>  <span class="m">82</span> <span class="m">577</span>
+Dec  <span class="m">17</span>  <span class="m">35</span>  <span class="m">61</span> <span class="m">401</span>
+
+Jan  <span class="m">21</span>  <span class="m">36</span>  <span class="m">64</span> <span class="m">620</span>
+Feb  <span class="m">26</span>  <span class="m">58</span>  <span class="m">80</span> <span class="m">652</span>
+Mar  <span class="m">24</span>  <span class="m">75</span>  <span class="m">70</span> <span class="m">495</span>
+Apr  <span class="m">21</span>  <span class="m">70</span>  <span class="m">74</span> <span class="m">514</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>1.3 一些简单的awk使用<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p><strong>找到mail-list文件中，包含了li字符串的行</strong>：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ awk <span class="s1">&#39;/li/ {print $0}&#39;</span> mail-list
+Amelia       <span class="m">555</span>-5553     amelia.zodiacusque@gmail.com    F
+Broderick    <span class="m">555</span>-0542     broderick.aliquotiens@yahoo.com R
+Julie        <span class="m">555</span>-6699     julie.perscrutabor@skeeve.com   F
+Samuel       <span class="m">555</span>-3430     samuel.lanceolis@shu.edu        A
+</pre></div>
+</div>
+<p>“/li/”是个正则表达式，默认是匹配行的，如果行满足就执行后面{}里面的代码。</p>
+<p><strong>找到行长度大于40的行，并显示长度</strong>：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ awk <span class="s1">&#39;length($0) &gt; 40 { print length($0) , $0} &#39;</span> mail-list
+<span class="m">59</span> Amelia       <span class="m">555</span>-5553     amelia.zodiacusque@gmail.com    F
+<span class="m">59</span> Anthony      <span class="m">555</span>-3412     anthony.asserturo@hotmail.com   A
+<span class="m">59</span> Becky        <span class="m">555</span>-7685     becky.algebrarum@gmail.com      A
+<span class="m">59</span> Bill         <span class="m">555</span>-1675     bill.drowning@hotmail.com       A
+<span class="m">59</span> Broderick    <span class="m">555</span>-0542     broderick.aliquotiens@yahoo.com R
+<span class="m">59</span> Camilla      <span class="m">555</span>-2912     camilla.infusarum@skynet.be     R
+<span class="m">59</span> Fabius       <span class="m">555</span>-1234     fabius.undevicesimus@ucb.edu    F
+<span class="m">59</span> Julie        <span class="m">555</span>-6699     julie.perscrutabor@skeeve.com   F
+<span class="m">59</span> Martin       <span class="m">555</span>-6480     martin.codicibus@hotmail.com    A
+<span class="m">59</span> Samuel       <span class="m">555</span>-3430     samuel.lanceolis@shu.edu        A
+<span class="m">59</span> Jean-Paul    <span class="m">555</span>-2127     jeanpaul.campanorum@nyu.edu     R
+</pre></div>
+</div>
+<p>很不巧，上面我们的数据非常规整，长度都大于40且长度一样。</p>
+<p><strong>打印文件的偶数行</strong>：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ awk <span class="s1">&#39;NR % 2 == 0&#39;</span> mail-list
+Anthony      <span class="m">555</span>-3412     anthony.asserturo@hotmail.com   A
+Bill         <span class="m">555</span>-1675     bill.drowning@hotmail.com       A
+Camilla      <span class="m">555</span>-2912     camilla.infusarum@skynet.be     R
+Julie        <span class="m">555</span>-6699     julie.perscrutabor@skeeve.com   F
+Samuel       <span class="m">555</span>-3430     samuel.lanceolis@shu.edu        A
+</pre></div>
+</div>
+<p>我这里没有指定要打印数据， 默认是打印$0，也就是整行数据</p>
+</div>
+<div class="section" id="id9">
+<h2>1.4 两个规则样例<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>上面的样例，我们都使用的单一个条件匹配就打印了。 如果条件比较复杂就需要多个条件来控制了。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ awk <span class="s1">&#39;/12/ {print $0 }</span>
+<span class="s1">&gt; /21/  {print $0 } &#39;</span> mail-list inventory-shipped
+Anthony      <span class="m">555</span>-3412     anthony.asserturo@hotmail.com   A
+Camilla      <span class="m">555</span>-2912     camilla.infusarum@skynet.be     R
+Fabius       <span class="m">555</span>-1234     fabius.undevicesimus@ucb.edu    F
+Jean-Paul    <span class="m">555</span>-2127     jeanpaul.campanorum@nyu.edu     R
+Jean-Paul    <span class="m">555</span>-2127     jeanpaul.campanorum@nyu.edu     R
+Jan  <span class="m">21</span>  <span class="m">36</span>  <span class="m">64</span> <span class="m">620</span>
+Apr  <span class="m">21</span>  <span class="m">70</span>  <span class="m">74</span> <span class="m">514</span>
+</pre></div>
+</div>
+<p>写了2组，每组都是一个pattern,一个打印， 如果满足就打印。</p>
+</div>
+<div class="section" id="id10">
+<h2>1.5 关于awk语句的跨行问题<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>跨行问题很常见的，一行写不完就需要写2行甚至多行。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>root@centos74 test<span class="o">]</span>$ awk <span class="s1">&#39;BEGIN{print &quot;this is a test,this is a test , this is a test \</span>
+<span class="s1">&gt; this is a test &quot; }&#39;</span>
+this is a test,this is a <span class="nb">test</span> , this is a <span class="nb">test</span> this is a <span class="nb">test</span>
+</pre></div>
+</div>
+<p>对于普通的字符串需要换行的时候，我们需要添加``去转义回车符号。 但是对于如下字符我们没有必要去添加转义符号：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>,    <span class="o">{</span>    ?    :    <span class="o">||</span>    <span class="o">&amp;&amp;</span>    <span class="k">do</span>    <span class="k">else</span>
+</pre></div>
+</div>
+<p>上面的字符我们没有必要去添加转义符号， 还有一些awk内置的关键词也是如此。如果一行写不下。直接回车写下一行就是了。</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="运行awk.html" class="btn btn-neutral float-right" title="2 运行awk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="my_study_rst’s 学习笔记" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, xiaojun.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'v1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
